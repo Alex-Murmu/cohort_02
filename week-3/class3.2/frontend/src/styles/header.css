@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+.logo img {
+    width: 50px;
+    height: 50px;
+}
+.menu ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.menu ul li {
+    margin: 0 15px;
+}
+.menu ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #333;
+    transition: transform 0.3s ease, 0.3s ease, transform 0.3s ease;
+}
+.menu ul li a:hover {
+    color: #0073e6;
+    transform: scale(5.1);
+}
+.dashboard p {
+    font-size: 1.2rem;
+    color: #333;
+}

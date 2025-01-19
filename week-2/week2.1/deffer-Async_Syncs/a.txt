@@ -1,0 +1,9 @@
+Name: John Smith
+Age: 30
+Email: john.smith@email.com
+Address: 123 Main Street
+City: Springfield
+State: IL
+ZIP: 62701
+Phone: (555) 123-4567
+Occupation: Software Developer

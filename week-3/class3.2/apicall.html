@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .user-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            transition: transform 0.5s ease, background-color 0.3s ease;
+       }
+        .user-card:hover{
+            transform: scale(1.2);
+            background-color: #333;
+            color:white;
+        }
+
+        .user-card h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .user-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        #main {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+       
+    </style>
+</head>
+<body>
+    <button onclick="getdata()">getdetails</button>
+    <div id="main">
+
+    </div>
+    <script>
+        function getdata(){
+            fetch('https://jsonplaceholder.typicode.com/users').then((response)=>response.json().then((data)=>{
+                const mainDiv = document.getElementById('main');
+                data.forEach(user => {
+                    const userDiv = document.createElement('div');
+                    userDiv.className = 'user-card'
+                    userDiv.innerHTML = `
+                     <h1> userName : ${user.name} </h1>
+                     <p> id : ${user.id}</p>
+                     <p> usernmae : ${user.username}</p>
+                     <p> address : ${user.address["city"]}</p>
+                     <p> address : ${user.address['geo']['lat']} $$$ ${user.address['geo']['lng']}</p>
+                     <p> email : ${user.email}</p>
+                     <p> phone : ${user.phone}</p>
+                     <p> website : ${user.website}</p>
+                     
+                    `;
+                    console.log(user)
+                    mainDiv.appendChild(userDiv)
+                });
+            }))
+        }
+    </script>
+</body>
+</html>
