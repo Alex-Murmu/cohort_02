@@ -1,17 +1,39 @@
-const express = require("express");
-const port = 1000;
-const app = express();
+const { z } = require("zod"); // Import Zod
+const express = require("express"); // Import Express
+const app = express(); // Initialize Express app
+const port = 2000;
 
-app.get('/getData',(req,res)=>{
-    fetch('https://fakestoreapi.com/products/categories')
-            .then(res=>res.json())
-            .then(json=>console.log(json))
+app.use(express.json()); // Middleware to parse JSON request body
 
-            res.json()
-})
+// Define Zod schema for user validation
+const userSchema = z.object({
+  name: z.string(),
+  email: z.string().email(), // Validate email format
+  password: z.string().min(6) // Ensure password has a minimum length of 6
+});
 
+// Route for signup
+app.post("/signup", (req, res) => {
+  try {
+    // Validate request body using Zod
+    const validatedUser = userSchema.parse(req.body);
 
+    // At this point, `validatedUser` contains the validated data
+    // Proceed with your business logic
+    res.status(200).json({
+      message: "Signup successful",
+      user: validatedUser
+    });
+  } catch (error) {
+    // If validation fails, Zod throws an error
+    res.status(400).json({
+      message: "Validation failed",
+      error: error.errors // Provide detailed validation errors
+    });
+  }
+});
 
-app.listen(port,()=>{
-    console.log("Sever is running");
-})
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});

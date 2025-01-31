@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="Your Name">
+    <input type="number" id="age" placeholder="Your Age">
+    <input type="text" id="address" placeholder="Your Address">
+    <button onclick="call()">Submit</button>
+    <div class="main"></div>
+
+    <script>
+      function call() {
+        const name = document.getElementById('name').value;
+        const age = document.getElementById('age').value;
+        const address = document.getElementById('address').value;
+        const main = document.getElementById('main');
+
+
+        // Preparing data to send
+        const data = { name, age, address };
+
+        const url = `http://localhost:2000/?name=${encodeURIComponent(name)}&age=${age}&address=${encodeURIComponent(address)}`;
+        // Using GET method to send data
+        fetch(url).then((response)=>{
+          if(!response.ok){
+            alert(" Not resposnse",response.message)
+          }
+          return response.json();
+        }).then((data)=>{
+          const message = document.createElement("p");
+          data.forEach(element => {
+             main.appendChild(message.innerHTML=element)
+          });
+          
+        }).catch((erro)=>{alert(erro.message)})
+     
+      }
+    </script>
+</body>
+</html>

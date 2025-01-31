@@ -23,6 +23,7 @@ app.use();  // and so on
 // global catches //   it takes four arguments as input
 app.use((err,req,res,next)=>{
     res.json("somethig went wrong")
+    next();
 })
 
 app.listen(port)
