@@ -52,7 +52,7 @@
     </div>
 </div>
 <script>
-
+     document.addEventListener('DOMContentLoaded',loadTask)
     function addtask(){
         const input = document.getElementById("inputTask");
         const inputData = input.value.trim();
@@ -66,19 +66,36 @@
         li.innerHTML  = `${inputData} <button onclick="removeTask(this)">Delete</button>`;
         const tasklist = document.getElementById('taskList');
         tasklist.appendChild(li);
-        console.log(li)
-
-
+        saveTask();
     }
     
-function removeTask(button){
-    button.parentElement.remove();
-}
+    function removeTask(button){
+    button.parentElement.remove()
+    saveTask();
+    }
+
+    const saveTask = ()=>{
+        let task = [];
+        document.querySelectorAll("#taskList li").forEach(li=>{
+            task.push(li.textContent.replace("Delete",""))
+        })
+        localStorage.setItem("tasks",JSON.stringify(task))
+
+    }
+
+    function loadTask(){
+        let tasks = JSON.parse(localStorage.getItem("tasks"));
+        const tasklist = document.getElementById("taskList");
+        tasks.forEach(task=>{
+          let li = document.createElement('li');
+          li.innerHTML = `${task} <button onclick="removeTask(this)">Delete</button>`;
+          tasklist.appendChild(li)
+          
+        })
+    }
 
     function submit(){
        addtask();
-    
-         
     }
 
 </script>
