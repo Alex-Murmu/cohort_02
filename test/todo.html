@@ -4,53 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <style>
-        #main2 button{
-            display: block;
-            margin:auto;
-            margin-top:20px;
-            margin-bottom:20px;
-            padding:5px 20px;
-            font-size: large;
-        }
-        #main2{
-            border:2px solid black;
-            width:40%;
-            margin:auto;
-            text-align: center;
-        }
-        #box2{
-            border:2px solid black;
-            width: 40%;
-            margin:auto;
-            margin-top: 20px;
-            text-align: center;
-        }
-        #box2 button {
-            background-color: rgb(210, 66, 66);
-            margin:10px;
-        }
-     #taskList li{
-        list-style: none;
-        border:2px solid black;
-     }
+   
       
-    </style>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-   <div id="main">
-     <div id="main2">
-        <h1>Your Todos</h1>
-        <label for="task">Task</label>
-        <input type="text" name="task" id="inputTask">
-        <button onclick="submit()">submit</button>
-    </div>
-    <div id="box2">
-        <ul id="taskList">
-            
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div id="main" class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
+      <div id="main2" class="text-center">
+        <h1 class="text-2xl font-bold mb-4 text-gray-800">Your Todos</h1>
+        <label for="task" class="block text-sm font-medium text-gray-600 mb-1">Task</label>
+        <input
+          type="text"
+          name="task"
+          id="inputTask"
+          placeholder="Enter your task..."
+          class="w-full border rounded-lg p-2 mb-4 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+        />
+        <button
+          onclick="submit()"
+          class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300"
+        >
+          Submit
+        </button>
+      </div>
+      <div id="box2" class="mt-6">
+        <ul id="taskList" class="list-disc list-inside text-gray-700 space-y-2">
+          <!-- Task list items will go here -->
         </ul>
+      </div>
     </div>
-</div>
 <script>
      document.addEventListener('DOMContentLoaded',loadTask)
     function addtask(){
@@ -63,10 +45,11 @@
         }
         const ul = document.getElementById("startList");
         const li = document.createElement("li");
-        li.innerHTML  = `${inputData} <button onclick="removeTask(this)">Delete</button>`;
+        li.innerHTML  = `${inputData} <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300" onclick="removeTask(this)">Delete</button>`;
         const tasklist = document.getElementById('taskList');
         tasklist.appendChild(li);
         saveTask();
+        console.log("sdsdsd")
     }
     
     function removeTask(button){
@@ -88,7 +71,7 @@
         const tasklist = document.getElementById("taskList");
         tasks.forEach(task=>{
           let li = document.createElement('li');
-          li.innerHTML = `${task} <button onclick="removeTask(this)">Delete</button>`;
+          li.innerHTML = `${task} <button class="bg-blue-500 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-600 transition duration-300" onclick="removeTask(this)">Delete</button>`;
           tasklist.appendChild(li)
           
         })
