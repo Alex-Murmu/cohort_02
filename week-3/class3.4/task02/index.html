@@ -1,0 +1,47 @@
+<!--
+## task 02
+~ 1. create a  webpage where ervery one second time goes up by one
+~ 2. where ervery one second time goes up by one second
+~ 3. basically time
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="see">
+         <p id="date"></p>
+         <p id="hour"></p>
+         <p id="minute"></p>
+         <p id="second"></p>
+    </div>
+    <script>
+
+     setInterval(()=>{
+        load()
+     },1000)
+const load =()=>{
+            const t1 = document.getElementById('hour');
+            const t2 = document.getElementById('minute');
+            const t3 = document.getElementById('second');
+            const date = new Date();
+            let hour = date.getHours();
+            let minutes = date.getMinutes();
+            let second = date.getSeconds();
+         t1.innerHTML =`${hour}`;
+         t2.innerHTML = `${minutes}`
+         t3.innerHTML = `${second}`
+
+        }
+
+        document.addEventListener('DOMContentLoaded',load)
+        
+    
+      
+    </script>
+</body>
+</html>
