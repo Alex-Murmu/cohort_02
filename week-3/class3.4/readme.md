@@ -14,12 +14,12 @@
   2. where in current time and GoeLocation will display
 
 
+
 ### 1. To-Do List App ✅
  Skills Tested: DOM manipulation, event handling, local storage
-
  Features:
 
-1. Add, edit, and delete tasks
+1. Add, edit, and delete tasks  
 2. Mark tasks as completed
 3. Store tasks in local storage
 4. 🔗 Bonus: Add a dark mode toggle
@@ -27,14 +27,14 @@
 ### 2. Weather App ⛅
  Skills Tested: Fetch API, working with APIs, error handling
 
- Features:
+ Features:      
 
 1. Fetch weather data from an API (OpenWeatherMap)
-2. Show city name, temperature, humidity, and weather condition
-3.  Add a search bar to get weather by city name
+2. Show city name, temperature, humidity, and weather cond ition
+3.  Add a search bar to get weather by city name 
 4. 🔗 Bonus: Use Geolocation API to fetch the user's location automatically
 
-### 3. Calculator 🧮
+### 3. Calculator 🧮        
 Skills Tested: Event listeners, logic building, handling user input
 
 Features:
