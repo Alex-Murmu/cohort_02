@@ -4,78 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .done{
+            color: red;
+            text-decoration: line-through;
+        }
+        .notdo{
+            color:white;
+        }
+    </style>
 </head>
 <body>
     <div>
-        <div id="input">
-            <input type="text">
-            <input type="text">
-        </div>
-        <div id="container">
-
-        </div>
+    <input id="input1" type="text" placeholder="title">
+        <br>
+        <input id="input2" type="text" placeholder="decription">
+        <br>
+        <button onclick="addtodo()">Add</button>
     </div>
+    <div id="container"></div>
 
     <script>
-        function createChild(title,description,id){
-        const child = document.createElement('div');
-        const firstGrandParent = document.createElement('div');
-        const SecondGrandParent = document.createElement('div');
-        const ThirdGrandParent = document.createElement('button');
-        
-        firstGrandParent.innerHTML = title;
-        SecondGrandParent.innerHTML = description;
-        ThirdGrandParent.innerHTML = `mark as done`;
+         let globalid = 1;
 
-        ThirdGrandParent.setAttribute('onclick',`markAsDone${id}`);
+         const createTodo =(title,description,id)=>{
+            const child = document.createElement("div");
+            const FirstGrandParent = document.createElement("div");
+            FirstGrandParent.innerHTML = title;
+            const SecondGrandParent = document.createElement("div");
+            SecondGrandParent.innerHTML = description;
+            const ThirdGrandParent = document.createElement("button");
+            ThirdGrandParent.innerHTML = `mark as done ${id}`;
+            ThirdGrandParent.setAttribute("onclick",`MarkAsDone(${id})`);
+            const FourthGrandParent = document.createElement("button");
+            FourthGrandParent.setAttribute("onclick",`Delte(${id})`)
+            FourthGrandParent.innerHTML = "Delte";
+            child.appendChild(FirstGrandParent);
+            child.appendChild(SecondGrandParent);
+            child.appendChild(ThirdGrandParent);
+            child.appendChild(FourthGrandParent)
+            child.setAttribute('id',id);
+            return child;
 
-        child.appendChild(firstGrandParent);
-        child.appendChild(SecondGrandParent);
-        child.appendChild(ThirdGrandParent);
-        child.setAttribute('id',id);
+         }
+         const addtodo =()=>{
+            const parent = document.getElementById('container');
+            const title = document.getElementById("input1").value;
+            const description = document.getElementById("input2").value;
 
-        return child;
-        
-    }
-
-    const ToupdateDom =(state)=>{
-        const parent = document.getElementById('container');
-        parent.innerHTML ='';
-
-        for(let i=0;i<state.length;i++){
-            const child = createChild(state[i].title ,state[i].description,state[i].id);
-            parent.appendChild(child);
-        }
-
-
-    }
- ToupdateDom(
-    [
-        {title:"Go to Librery",
-         description:"Between 4-10",
-         id:1
-        },
-        {title:"Go to School",
-         description:"Between 11-12",
-         id:2
-        },
-        {title:"Go to Plamu",
-         description:"Between 1-6",
-         id:3
-        },
-        {title:"Go to Plamu",
-         description:"Between 1-6",
-         id:3
-        },
-        {title:"Go to Plamu",
-         description:"Between 1-6",
-         id:3
-        }
-    ]
- )
-
-  
-        
+            if(!title || !description){
+                alert("Empty Field");
+            }
+            parent.appendChild(createTodo(title,description,globalid++))
+         }
+         const MarkAsDone =(id)=>{
+           const parent = document.getElementById(id);
+           parent.children[2].innerHTML ="undo";
+           parent.children[2].setAttribute("onclick",`undo(${id})`);
+           parent.setAttribute('class',"done")
+         }
+         const undo =(id)=>{
+            const parent = document.getElementById(id);
+            parent.children[2].innerHTML ="Mark as Done"
+            parent.children[2].setAttribute("onclick","MarkAsDone("+id+")");
+            parent.setAttribute('class',"notdone")
+         }
+         const Delte = (id)=>{
+              const todos = document.getElementById("container");
+              const todo = document.getElementById(id);
+              todo.remove(todo);
+         }
     </script>
 </body>
 </html>
