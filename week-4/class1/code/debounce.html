@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="a" placeholder="number">
+    <input oninput="debounce()" type="text" id="b" placeholder="number">;
+
+    <script>
+      let timeout;
+      function debounce(){
+          clearTimeout(timeout);
+      timeout =  setTimeout(()=>{
+          getres()
+        },1000)
+      }
+
+      async  function getres(){
+            const a = document.getElementById('a').value;
+            const b = document.getElementById('b').value;
+            const reponse =   await fetch('http://localhost:2000/sum?a='+a+'&b='+b)
+           const data = await reponse.text();
+           console.log(data);
+           const h1 = document.createElement('h1');
+           h1.innerHTML = data;
+           document.body.appendChild(h1); 
+           
+
+        }
+        </script>
+</body>
+</html>
