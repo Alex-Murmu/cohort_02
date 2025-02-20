@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #slider{
+            width:900px;
+        }
+        img{
+            width:900px;
+        }
+
+        #container{
+            display: flex;
+            justify-content: space-around;
+            align-content: center;
+        }
+    #slider{
+        position: relative;
+        overflow: hidden;
+    }
+    .slide{
+        position: absolute;
+    }
+    .btn{
+        display: flex;
+      
+       height:100vh;
+       align-items: center;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="btn">
+            <button onclick="goPrevious()">
+                Pre
+            </button>
+        </div>
+       <div id="slider">
+           <img src="./ images/highway-4494907_1280.jpg"  class="slide" alt="image">
+           <img src="./ images/man-7768120_1280.jpg"     class="slide" alt="image">
+           <img src="./ images/traffic-332857_1280.jpg"  class="slide" alt="image">
+    </div>
+       <div class="btn" onclick="goNext()"><button>next</button></div>
+    </div>
+    <script>
+        
+            const next = document.querySelectorAll('.slide');
+            let counter =0;
+
+            next.forEach((slide,index)=>{
+                slide.style.left = `${index*100}%`;
+            })
+            const goNext=()=>{
+                counter++;
+                slideImage();
+              }
+              const goPrevious=()=>{
+                counter--;
+                slideImage();
+                
+              }
+            
+            const slideImage=()=>{
+                  next.forEach((slide)=>{
+                    slide.style.transform =`translateX(${counter*100}%)`
+                  })
+            }
+        
+    </script>
+</body>
+</html>

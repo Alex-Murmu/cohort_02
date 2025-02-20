@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+</head>
+<body>
+
+  <h1>To-Do List</h1>
+
+  <label for="title">Title:</label>
+  <input type="text" id="title" name="title"><br><br>
+
+  <label for="description">Description:</label>
+  <textarea id="description" name="description"></textarea><br><br>
+
+  <button onclick="addTodo()">Add To-Do</button>
+
+  <div id="todos">
+    <!-- To-dos will be added here -->
+  </div>
+
+  <script>
+    function addTodo() {
+      const parent = document.getElementById('todos');
+      const div = document.createElement('div');
+
+      const title = document.getElementById('title').value;
+      const description = document.getElementById('description').value;
+
+      const titleHeading = document.createElement('h2');
+      titleHeading.textContent = title;
+
+      const descriptionHeading = document.createElement('h3'); // Use h3 or p for description
+      descriptionHeading.textContent = description;
+
+      // Append the elements to the div:
+      div.appendChild(document.createTextNode('Task Title: ')); // Add a text node for the label
+      div.appendChild(titleHeading);
+      div.appendChild(document.createElement('br')); // Add a line break
+      div.appendChild(document.createTextNode('Description: ')); // Add a text node for the label
+      div.appendChild(descriptionHeading);
+
+      parent.appendChild(div);
+
+      // Clear the input fields (optional):
+      document.getElementById('title').value = '';
+      document.getElementById('description').value = '';
+    }
+  </script>
+
+</body>
+</html>

@@ -1,18 +1,3 @@
-## task to complete or assignment
-##   task 01
- 1. create a webpage that contain  one button on it 
- 2. on button click fetch some user data from somey api 
- 3. Display all that data you received in visual effect
- 
-## task 02
- 1. create a  webpage where ervery one second time goes up by one
- 2. where ervery one second time goes up by one second
- 3. basically timer
-
-## task 03 
-  1. create page
-  2. where in current time and GoeLocation will display
-
 
 
 ### 1. To-Do List App ✅

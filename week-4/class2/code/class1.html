@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div id="input">
+            <input type="text">
+            <input type="text">
+        </div>
+        <div id="container">
+
+        </div>
+    </div>
+
+    <script>
+        function createChild(title,description,id){
+        const child = document.createElement('div');
+        const firstGrandParent = document.createElement('div');
+        const SecondGrandParent = document.createElement('div');
+        const ThirdGrandParent = document.createElement('button');
+        
+        firstGrandParent.innerHTML = title;
+        SecondGrandParent.innerHTML = description;
+        ThirdGrandParent.innerHTML = `mark as done`;
+
+        ThirdGrandParent.setAttribute('onclick',`markAsDone${id}`);
+
+        child.appendChild(firstGrandParent);
+        child.appendChild(SecondGrandParent);
+        child.appendChild(ThirdGrandParent);
+        child.setAttribute('id',id);
+
+        return child;
+        
+    }
+
+    const ToupdateDom =(state)=>{
+        const parent = document.getElementById('container');
+        parent.innerHTML ='';
+
+        for(let i=0;i<state.length;i++){
+            const child = createChild(state[i].title ,state[i].description,state[i].id);
+            parent.appendChild(child);
+        }
+
+
+    }
+ ToupdateDom(
+    [
+        {title:"Go to Librery",
+         description:"Between 4-10",
+         id:1
+        },
+        {title:"Go to School",
+         description:"Between 11-12",
+         id:2
+        },
+        {title:"Go to Plamu",
+         description:"Between 1-6",
+         id:3
+        },
+        {title:"Go to Plamu",
+         description:"Between 1-6",
+         id:3
+        },
+        {title:"Go to Plamu",
+         description:"Between 1-6",
+         id:3
+        }
+    ]
+ )
+
+  
+        
+    </script>
+</body>
+</html>

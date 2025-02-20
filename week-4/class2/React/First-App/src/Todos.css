@@ -1,0 +1,43 @@
+.app-container {
+    text-align: center;
+    padding: 20px;
+  }
+  .dark {
+    background-color: black;
+    color: white;
+  }
+  .input-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  input {
+    padding: 8px;
+    margin-right: 5px;
+  }
+  button {
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border: 1px solid #ccc;
+    margin: 5px;
+    cursor: pointer;
+  }
+  .completed {
+    text-decoration: line-through;
+    color: gray;
+  }
+  .delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
