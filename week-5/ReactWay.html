@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="buttonParent"></div>
+
+    <script>
+        let count = 0;
+         const onClickHandler =()=>{
+            count+=1;
+         }
+        // Corrected variable name from "buttton" to "button"
+        const button = document.createElement("button"); 
+        const buttonParent = document.getElementById("buttonParent");
+        button.setAttribute('click',onclickHandler())
+        button.textContent = `counter ${count}`; // Fixed text spelling as well
+        buttonParent.appendChild(button);
+    </script>
+</body>
+</html>

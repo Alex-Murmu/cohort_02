@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input oninput="debounce()" type="text" placeholder="enter" id="data">
+    <h1 id="new"></h1>
+
+    <script>
+        let timeout;
+        const debounce =()=>{
+           clearTimeout(timeout);
+           timeout = setTimeout(()=>{
+            getdata()
+           },100)
+        }
+        const getdata=()=>{
+            const data = document.getElementById('data').value;
+            document.getElementById("new").textContent =data;
+        }
+    </script>
+</body>
+</html>
