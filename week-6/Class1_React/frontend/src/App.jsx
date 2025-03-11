@@ -1,35 +1,44 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [todos, settodos] = useState(
+    {title:"mango",
+      description:"Apple"
+    }
+  )
+  const [isHovered, setIsHovered] = useState(false);
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+    <Header title="Hello" />
+    <Headers todos={todos} isHovered={isHovered} setIsHovered={setIsHovered} />
+    </div>
   )
 }
+
+function Header({title}){
+   return <div>
+    {title}
+   </div>
+}
+
+function Headers({todos ,isHovered, setIsHovered}){
+  return <>
+    <div>{todos.title}</div>
+    <div>{todos.description}</div>
+    <button style={{
+      padding:10,
+      margin:10,
+      background: isHovered ? "blue" :"red",
+      border:"none",
+      borderRadius:5
+    }}
+    onMouseEnter={()=>setIsHovered(true)}
+    onMouseLeave={()=>setIsHovered(false)}
+    >more</button>
+   
+  </>
+}
+
+
 
 export default App
