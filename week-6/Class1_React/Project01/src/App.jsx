@@ -61,30 +61,55 @@
 // export default App
 
 
-import React, { useState } from 'react'
+// import React, { useState } from 'react'
 
+// function App() {
+//   const [name,setName] = useState("Alex Mumru");
+//   function Handle(){
+//     setName("counter is "+Math.random());
+//   }
+//   return (
+//     <div>
+//      <button onClick={Handle}>changeName</button>
+//      <Header name={name} />
+//      <Header name={name} />
+//      <Header name="Pankaj" />
+//      <Header name="Pankaj" />
+//      <Header name="Pankaj" />
+//      <Header name="Pankaj" />
+//      <Header name="Pankaj" />
+//     </div>
+//   )
+// }
+// const Header =React.memo(function ({name}){
+//  return <>
+//   <div>{name}</div>
+//  </>
+// })
+
+// export default App
+
+// import React, { useEffect } from 'react'
+// import UseEffect01 from './component/UseEffect01'
+
+// function App() {
+//   return (
+//     <div>
+//       <UseEffect01 />
+//     </div>
+//   )
+// }
+
+// export default App
+
+import React from 'react'
+import ReacMemo02 from './component/ReacMemo02.jsx'
 function App() {
-  const [name,setName] = useState("Alex Mumru");
-  function Handle(){
-    setName("counter is "+Math.random());
-  }
   return (
     <div>
-     <button onClick={Handle}>changeName</button>
-     <Header name={name} />
-     <Header name={name} />
-     <Header name="Pankaj" />
-     <Header name="Pankaj" />
-     <Header name="Pankaj" />
-     <Header name="Pankaj" />
-     <Header name="Pankaj" />
+      <ReacMemo02></ReacMemo02>
     </div>
   )
 }
-const Header =React.memo(function ({name}){
- return <>
-  <div>{name}</div>
- </>
-})
 
 export default App
