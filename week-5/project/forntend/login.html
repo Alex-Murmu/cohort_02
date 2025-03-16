@@ -75,8 +75,8 @@
     });
 
     const fetchresponse = await response.json();
-
-    if (fetchresponse.message === "user logged in") {
+    console.log(fetchresponse.message)
+    if (fetchresponse.message =="user logged in") {
         alert("Login successful!");
         window.location.href = "./task.html"; // Redirect to the dashboard page
     } else {

@@ -1,16 +1,14 @@
+
 import React, { useState } from 'react'
-import imge  from './images/image.png'
-import image2  from './images/elephant.png'
-import './App.css'
-import Header from './component/Header';
-import Main from './component/Mian'
+import {Signup ,Signin} from './component/Signup'
+import Todo from './component/Todo'
 function App() {
 
 
   return (
    <>
-   <Header />
-   <Main />
+   <Signup />
+   <Todo />
    </>
   )
 }

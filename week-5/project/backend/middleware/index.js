@@ -25,12 +25,13 @@ const IsvalidUser = async (req,res,next)=>{
     try {
       const user =await  User.findOne({username,password});
       if (user) {
-        res.json({ message: "user logged in", success: true });
+        // res.json({ message: "user logged in", success: true });
+        next();
     } else {
         res.json({ message: "Invalid credentials", success: false });
     }
     } catch (error) {
-      
+      res.json({message:"can create todo"})
     }
 }
 

@@ -62,5 +62,34 @@
      </div>
    </div>
 </div>
+<script>
+    const  add= async()=>{
+      const task = document.getElementById("task").value;
+      const description = document.getElementById("description").value;
+
+      try {
+       const fi = await  fetch("http://localhost:2000/user/create",{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify({
+            title:task,
+            description:description,
+            completed:false,
+            username:"MAN",
+            password:"man"
+        })
+       });
+
+       const res = await fi.json();
+       console.log(res)
+      } catch (error) {
+        console.log(error)
+      }
+
+
+    }
+</script>
 </body>
 </html>

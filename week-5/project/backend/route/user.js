@@ -1,28 +1,27 @@
 const express = require('express');
-const {User, todos} = require('../databaseSchema/db');
+const { User, todos } = require('../databaseSchema/db');
 const router = express.Router();
-const {userExist , IsvalidUser} = require("../middleware/index");
-const { ServerDescription } = require('mongodb');
+const { IsvalidUser } = require("../middleware/index");
 
-router.post("/signup",userExist, async(req, res)=>{
-    const username = req.body.username;
-    const password = req.body.password;
-    const email = req.body.email;
+// Signup Route
+router.post("/signup", async (req, res) => {
+    const { username, password, email } = req.body;
+    console.log(username, password, email);
 
-    if(!username && !password){
-        return res.send("empty")
+    if (!username || !password || !email) {
+        return res.json({ message: "empty" });  // ✅ JSON response fix
     }
-  
-    await User.create({
-        username:username,
-        email:email,
-        password:password
-    })
 
-    res.send("user created successfully")
+    try {
+        await User.create({ username, email, password });
+        res.json({ message: "User created successfully" });
+    } catch (error) {
+        console.error("Signup Error:", error);
+        res.status(500).json({ message: "Server error", error: error.message });
+    }
+});
 
-})
-
+// Signin Route
 router.post("/signin", async (req, res) => {
     const { username, password } = req.body;
     console.log("Received Username:", username);
@@ -42,24 +41,21 @@ router.post("/signin", async (req, res) => {
         res.status(500).json({ message: "Server error", success: false });
     }
 });
- 
 
-router.post("/create",IsvalidUser,async(req,res)=>{
-    const todo = req.body;
-console.log("inside route")
-    const newtodo = {
-        title:todo.title,
-        description:todo.description,
-        completed:todo.completed
-    }
+// Create Todo Route
+router.post("/create", IsvalidUser, async (req, res) => {
+    const { title, description, completed } = req.body;
+    console.log("Inside route");
 
     try {
-       await todos.create(newtodo);
-       res.send("todo created successfully");
+       const todo =  await todos.create({ title, description, completed });
+       if(todo){
+           res.json({ message: "Todo created successfully" });  // ✅ JSON response fix
+       }
     } catch (error) {
-        res.send(error);
+        console.error("Todo Error:", error);
+        res.status(500).json({ message: "Server error", error: error.message });
     }
-
-})
+});
 
 module.exports = router;

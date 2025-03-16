@@ -3,10 +3,10 @@ const { boolean } = require("zod");
 
 const connection= async()=>{
     try {
-       await mongoose.connect("mongodb+srv://ftalexrayen:2frdH6xQ0HoEIpXz@cluster0.ew5fs.mongodb.net/todos");
+       await mongoose.connect("mongodb+srv://ftalexrayen:2frdH6xQ0HoEIpXz@cluster0.ew5fs.mongodb.net/Todo_App");
         console.log("databse is connected")
     } catch (error) {
-        console.log("erro")
+        console.log("erro",error)
     }
     
 }
